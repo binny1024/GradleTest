@@ -1,0 +1,6 @@
+ext{
+    extMinSdkVersion = 19
+    extTargetSdkVersion = 26
+    extCompileSdkVersion = 28
+    extBuildToolsVersion = '28.0.3'
+}

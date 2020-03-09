@@ -1,0 +1,47 @@
+// 任务创建的三种方式
+
+//1,最单纯地创建一个任务,也就是只有名字
+
+def Task task1 = task('task1')
+
+task1.doLast {
+    println 'task1'
+}
+
+//2,任务名+闭包配置的方式
+/**
+ * <p>Creates a {@link Task} with the given name and adds it to this project. Before the task is returned, the given
+ * closure is executed to configure the task.</p> <p>After the task is added to the project, it is made
+ * available as a property of the project, so that you can reference the task by name in your build file.  See <a
+ * href="#properties">here</a> for more details</p>
+ *
+ * @param name The name of the task to be created
+ * @param configureClosure The closure to use to configure the created task.
+ * @return The newly created task object
+ * @throws InvalidUserDataException If a task with the given name already exists in this project.
+ */
+task task2() {
+    println("在 任务创建完成之前,会执行碧闭包中代码")
+}
+task2.doFirst {
+    println('task 就像是一个 任务的 产生器1')
+}
+task2.doLast {
+    println('task 就像是一个 任务的 产生器2')
+}
+//3,任务名+任务配置的Map对象
+def task3 = task(group: BasePlugin.BUILD_GROUP, "task3")
+task3.doLast { peintln '任务名+任务配置的Map对象' }
+
+/**
+ 不管哪种方式,任务的名字和任务变量是有区别的
+ 下面的task5是变量,而任务其实是 task7,task5只是用来配置task7的,而不是真正的任务
+ */
+def Task task5 = task('task7')
+
+task5.doLast {
+    println 'task7'
+}
+//禁用某个任务
+task5.enabled(false)
+

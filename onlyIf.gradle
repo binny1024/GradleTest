@@ -1,0 +1,104 @@
+/**
+ * 任务的断言
+ *
+ * Task 有一个 onlyIf方法,该方法接受一个闭包作为参数
+ * 如果该闭包返回true,则执行改任务,否则跳过该任务.
+ *
+ * 比如,程序在控制什么时候打什么包,什么时候执行单元测试等
+ *
+ * */
+
+final String BUILD_APPS_ALL = 'all'
+final String BUILD_APPS_SHOUFA = 'shoufa'
+final String BUILD_APPS_EXCLUDE_SHOUFA = 'exclude_shoufa'
+
+task ex48QQRelease {
+
+}
+
+ex48QQRelease.doLast {
+    println '打应用宝的包'
+}
+
+task ex48HuaweiRelease {
+
+}
+ex48HuaweiRelease.doLast {
+    println '打华为的包'
+}
+
+task ex48BaiduRealese {
+
+}
+ex48BaiduRealese.doLast {
+    println '打百度的包'
+}
+task ex48MiuiRelease {
+
+}
+ex48MiuiRelease.doLast {
+    println '打小米的包'
+}
+task builder {
+    group BasePlugin.BUILD_GROUP
+    description("大打渠道包")
+}
+
+builder.dependsOn(ex48QQRelease, ex48BaiduRealese, ex48HuaweiRelease, ex48MiuiRelease)
+
+ex48QQRelease.onlyIf {
+    def execute = false
+    if (project.hasProperty('build_apps')) {
+        def buildApps = project.property('build_apps')
+        if (BUILD_APPS_SHOUFA == buildApps || BUILD_APPS_ALL == buildApps) {
+            execute = true
+        } else {
+            execute = false
+        }
+    } else {
+        execute = true
+    }
+    execute
+}
+ex48BaiduRealese.onlyIf {
+    def execute = false
+    if (project.hasProperty('build_apps')) {
+        def buildApps = project.property('build_apps')
+        if (BUILD_APPS_SHOUFA == buildApps || BUILD_APPS_ALL == buildApps) {
+            execute = true
+        } else {
+            execute = false
+        }
+    } else {
+        execute = true
+    }
+    execute
+}
+ex48HuaweiRelease.onlyIf {
+    def execute = false
+    if (project.hasProperty('build_apps')) {
+        def buildApps = project.property('build_apps')
+        if (BUILD_APPS_EXCLUDE_SHOUFA == buildApps || BUILD_APPS_ALL == buildApps) {
+            execute = true
+        } else {
+            execute = false
+        }
+    } else {
+        execute = true
+    }
+    execute
+}
+ex48MiuiRelease.onlyIf {
+    def execute = false
+    if (project.hasProperty('build_apps')) {
+        def buildApps = project.property('build_apps')
+        if (BUILD_APPS_EXCLUDE_SHOUFA == buildApps || BUILD_APPS_ALL == buildApps) {
+            execute = true
+        } else {
+            execute = false
+        }
+    } else {
+        execute = true
+    }
+    execute
+}
