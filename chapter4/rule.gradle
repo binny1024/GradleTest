@@ -1,0 +1,15 @@
+/**
+ * 任务规则
+ * */
+
+tasks.addRule('app_name') {
+    String name ->
+        task(name).doLast {
+            println "该 ${name} 任务不存在,请查证后再执行"
+        }
+}
+task ruleTest {
+    //任务初始化
+    println('任务规则')
+    dependsOn missTask
+}

@@ -14,8 +14,9 @@ buildscript {
     }
 }
 
-apply from:'./task.gradle'
-apply from:'./onlyIf.gradle'
+apply from:'./chapter4/task.gradle'
+apply from:'./chapter4/onlyIf.gradle'
+apply from:'./chapter4/rule.gradle'
 allprojects {
     repositories {
         maven {

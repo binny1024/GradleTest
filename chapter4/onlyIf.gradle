@@ -12,31 +12,18 @@ final String BUILD_APPS_ALL = 'all'
 final String BUILD_APPS_SHOUFA = 'shoufa'
 final String BUILD_APPS_EXCLUDE_SHOUFA = 'exclude_shoufa'
 
-task ex48QQRelease {
-
-}
-
-ex48QQRelease.doLast {
+task(ex48QQRelease).doLast {
     println '打应用宝的包'
 }
 
-task ex48HuaweiRelease {
-
-}
-ex48HuaweiRelease.doLast {
+task(ex48HuaweiRelease).doLast {
     println '打华为的包'
 }
 
-task ex48BaiduRealese {
-
-}
-ex48BaiduRealese.doLast {
+task(ex48BaiduRealese).doLast {
     println '打百度的包'
 }
-task ex48MiuiRelease {
-
-}
-ex48MiuiRelease.doLast {
+task(ex48MiuiRelease).doLast {
     println '打小米的包'
 }
 task builder {
@@ -102,3 +89,10 @@ ex48MiuiRelease.onlyIf {
     }
     execute
 }
+/**
+ * 打所有包  gradle -Pbuild_apps=all builder
+ * 打首发包  gradle -Pbuild_apps=shoufa builder
+ * 打非首发包  gradle -Pbuild_apps=exclude_shoufa builder
+ *
+ * 命令中 -P的意思是为 Project 指定K-V格式的属性键值对,使用格式为 -PK=V
+ * */

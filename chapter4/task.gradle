@@ -21,7 +21,7 @@ task1.doLast {
  * @throws InvalidUserDataException If a task with the given name already exists in this project.
  */
 task task2() {
-    println("在 任务创建完成之前,会执行碧闭包中代码")
+    println("Before the task is returned, the given closure is executed to configure the task")
 }
 task2.doFirst {
     println('task 就像是一个 任务的 产生器1')
