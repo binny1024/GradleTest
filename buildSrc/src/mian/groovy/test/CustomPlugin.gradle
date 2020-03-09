@@ -1,0 +1,11 @@
+apply plugin: CustomPlugin
+
+class CustomPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project target) {
+        target.task('CustomPlugin') << {
+            println '自定义插件'
+        }
+    }
+}

@@ -1,5 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+/**
+ * buildscript 是在构建项目之前,为项目进行前期的准备和初始化工作,
+ * 比如下面的Android Gradl 插件
+ *
+ *  classpath 'com.android.tools.build:gradle:3.6.1'
+ *
+ * */
 buildscript {
     repositories {
         google()
@@ -17,6 +24,11 @@ buildscript {
 apply from:'./chapter4/task.gradle'
 apply from:'./chapter4/onlyIf.gradle'
 apply from:'./chapter4/rule.gradle'
+
+apply from:'./chapter5/apply.gradle'
+
+
+apply from:'./version.gradle'
 allprojects {
     repositories {
         maven {

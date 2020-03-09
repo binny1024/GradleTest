@@ -1,6 +1,8 @@
-ext{
+ext {
     extMinSdkVersion = 19
     extTargetSdkVersion = 26
     extCompileSdkVersion = 28
     extBuildToolsVersion = '28.0.3'
+    versionName = '1.0.0'
+    versionCode = 1
 }

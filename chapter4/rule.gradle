@@ -5,7 +5,7 @@
 tasks.addRule('app_name') {
     String name ->
         task(name).doLast {
-            println "该 ${name} 任务不存在,请查证后再执行"
+            println "该 ${name} 任务不存在,该任务是否存在?\n或者该任务所在的脚本是否在很目录的构建文件中应用\n请查证后再执行"
         }
 }
 task ruleTest {

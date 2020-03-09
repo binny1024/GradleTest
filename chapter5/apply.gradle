@@ -1,0 +1,15 @@
+task getVersion {
+    println 'Gradle 插件应用'
+}
+getVersion.doFirst {
+    println '获取应用的版本信息'
+}
+getVersion.doLast{
+    println "版本:${versionName}"
+    println "版本号:${versionCode}"
+}
+
+/**
+ * apply 有三种用法
+ *
+ * */
